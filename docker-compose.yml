@@ -1,0 +1,16 @@
+website:
+    image: nginx:latest
+    ports:
+        - "80:80"
+    volumes:
+        - ./myprojects:/myprojects
+        - ./site1.conf:/etc/nginx/conf.d/default.conf
+#        - ./site2.conf:/etc/nginx/conf.d/site2.conf
+    links:
+        - php
+
+php:
+    build: .
+    volumes:
+        - ./myprojects:/myprojects
+
